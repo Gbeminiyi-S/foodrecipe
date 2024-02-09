@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
               child: Text(
                 "How to make french\ntoast",
                 style: TextStyle(
-                  fontSize: 28,
+                  fontSize: 26,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -44,6 +44,7 @@ class _HomePageState extends State<HomePage> {
             VideoSection(
                 bgImg: "assets/images/pizza_dish.png",
                 frImg: "assets/images/play_button.png"),
+            RatingSection(),
           ],
         ));
   }
@@ -90,10 +91,10 @@ class VideoSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      height: 200, // Set your desired height
+      height: 200,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(18), // Rounded corners
-        color: Colors.white, // Optional background color
+        borderRadius: BorderRadius.circular(18),
+        color: Colors.white,
       ),
       child: Stack(
         alignment: Alignment.center,
@@ -113,5 +114,30 @@ class VideoSection extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class RatingSection extends StatelessWidget {
+  const RatingSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Padding(
+        padding: EdgeInsets.all(30.0),
+        child: Row(
+          children: [
+            Icon(Icons.star, color: Colors.orange),
+            SizedBox(width: 10), // Add equal spacing between items
+            Text(
+              "4,5",
+              style: TextStyle(fontSize: 20),
+            ),
+            SizedBox(width: 10), // Add equal spacing between items
+            Text(
+              "(300 Reviews)",
+              style: TextStyle(fontWeight: FontWeight.w200, fontSize: 20),
+            ),
+          ],
+        ));
   }
 }
