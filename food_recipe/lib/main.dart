@@ -45,6 +45,7 @@ class _HomePageState extends State<HomePage> {
                 bgImg: "assets/images/pizza_dish.png",
                 frImg: "assets/images/play_button.png"),
             RatingSection(),
+            UserSection(),
           ],
         ));
   }
@@ -130,14 +131,72 @@ class RatingSection extends StatelessWidget {
             SizedBox(width: 10), // Add equal spacing between items
             Text(
               "4,5",
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(fontSize: 18),
             ),
             SizedBox(width: 10), // Add equal spacing between items
             Text(
               "(300 Reviews)",
-              style: TextStyle(fontWeight: FontWeight.w200, fontSize: 20),
+              style: TextStyle(fontWeight: FontWeight.w200, fontSize: 18),
             ),
           ],
         ));
+  }
+}
+
+class UserSection extends StatelessWidget {
+  const UserSection({Key? key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 30.0, right: 30.0),
+      child: Row(
+        children: [
+          Image.asset("assets/images/model.png"),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Roberta Anny",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Row(
+                  children: [
+                    Image.asset("assets/images/location.png"),
+                    const SizedBox(width: 8),
+                    const Text(
+                      "Bali, Indonesia",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w200,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Container(
+            height: 50,
+            width: 90,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.red.shade500,
+            ),
+            child: const Center(
+              child: Text(
+                "Follow",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
