@@ -28,16 +28,23 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return const Scaffold(
         appBar: AppBarSection(),
-        body: Padding(
-          padding: EdgeInsets.only(left: 30.0),
-          child: Column(
-            children: [
-              Text(
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(left: 35.0, bottom: 25),
+              child: Text(
                 "How to make french\ntoast",
-                style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ],
-          ),
+            ),
+            VideoSection(
+                bgImg: "assets/images/pizza_dish.png",
+                frImg: "assets/images/play_button.png"),
+          ],
         ));
   }
 }
@@ -48,11 +55,11 @@ class AppBarSection extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: IconButton(
-        onPressed: () {},
-        icon: Padding(
-          padding: const EdgeInsets.only(left: 20.0),
-          child:
+      leading: Padding(
+        padding: const EdgeInsets.only(left: 30.0),
+        child: IconButton(
+          onPressed: () {},
+          icon:
               Transform.scale(scale: 1.5, child: const Icon(Icons.arrow_back)),
         ),
       ),
@@ -71,4 +78,40 @@ class AppBarSection extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}
+
+class VideoSection extends StatelessWidget {
+  const VideoSection({super.key, required this.bgImg, required this.frImg});
+
+  final String bgImg;
+  final String frImg;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      height: 200, // Set your desired height
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(18), // Rounded corners
+        color: Colors.white, // Optional background color
+      ),
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(18),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(18),
+              child: Image.asset(
+                bgImg,
+              ),
+            ),
+          ),
+          Image.asset(frImg, fit: BoxFit.cover),
+        ],
+      ),
+    );
+  }
 }
