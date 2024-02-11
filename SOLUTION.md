@@ -7,4 +7,4 @@ This is a Flutter project that will build a beautiful and easy-to-use food recip
 
 ## UI screenshot
 
-![Screenshot of project UI]("Food Recipe")
+![Screenshot of project UI](./food_recipe/assets/images/Screenshot.jpg)
