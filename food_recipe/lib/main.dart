@@ -163,9 +163,10 @@ class RatingSection extends StatelessWidget {
             Text(
               "(300 Reviews)",
               style: TextStyle(
-                  fontWeight: FontWeight.w300,
-                  fontSize: 15,
-                  color: Colors.grey),
+                fontWeight: FontWeight.w400,
+                fontSize: 16,
+                color: Color(0xFFA9A9A9),
+              ),
             ),
           ],
         ));
@@ -209,9 +210,9 @@ class UserSection extends StatelessWidget {
                       const Text(
                         "Bali, Indonesia",
                         style: TextStyle(
-                          fontWeight: FontWeight.w300,
+                          fontWeight: FontWeight.w400,
                           fontSize: 16,
-                          color: Colors.grey,
+                          color: Color(0xFFA9A9A9),
                         ),
                       ),
                     ],
@@ -225,7 +226,7 @@ class UserSection extends StatelessWidget {
             width: 100,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Colors.red.shade800,
+              color: const Color(0xFFE23E3E),
             ),
             child: const Center(
               child: Text(
@@ -262,8 +263,9 @@ class IngredentHeaderSection extends StatelessWidget {
           Text(
             "5 items",
             style: TextStyle(
-              fontWeight: FontWeight.w300,
-              color: Colors.grey,
+              fontWeight: FontWeight.w400,
+              color: Color(0xFFA9A9A9),
+              fontSize: 16,
             ),
           ),
         ],
@@ -293,8 +295,7 @@ class IngredientSection extends StatelessWidget {
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Colors.transparent, width: 2),
-          color: Colors.grey.shade200,
+          color: const Color(0xFFA9A9A9).withOpacity(0.2),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -316,16 +317,16 @@ class IngredientSection extends StatelessWidget {
                 Text(
                   foodName,
                   style: const TextStyle(
-                      fontSize: 17, fontWeight: FontWeight.bold),
+                      fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
             Text(
               foodWeight,
               style: const TextStyle(
-                fontWeight: FontWeight.w300,
-                color: Colors.grey,
-                fontSize: 14,
+                fontWeight: FontWeight.w400,
+                color: Color(0xFFA9A9A9),
+                fontSize: 16,
               ),
             ),
           ],
