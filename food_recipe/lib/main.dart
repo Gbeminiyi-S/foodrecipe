@@ -159,7 +159,7 @@ class RatingSection extends StatelessWidget {
               "4,5",
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
-            SizedBox(width: 6), // Add equal spacing between items
+            SizedBox(width: 6),
             Text(
               "(300 Reviews)",
               style: TextStyle(
