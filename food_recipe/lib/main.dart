@@ -28,25 +28,40 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return const Scaffold(
         appBar: AppBarSection(),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.only(left: 35.0, bottom: 25),
-              child: Text(
-                "How to make french\ntoast",
-                style: TextStyle(
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold,
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: 20.0, bottom: 25),
+                child: Text(
+                  "How to make french\ntoast",
+                  style: TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
-            ),
-            VideoSection(
-                bgImg: "assets/images/pizza_dish.png",
-                frImg: "assets/images/play_button.png"),
-            RatingSection(),
-            UserSection(),
-          ],
+              VideoSection(
+                  bgImg: "assets/images/pizza_dish.png",
+                  frImg: "assets/images/play_button.png"),
+              RatingSection(),
+              UserSection(),
+              IngredentHeaderSection(),
+              IngredientSection(
+                  foodImage: "assets/images/food.png",
+                  foodName: "Bread",
+                  foodWeight: "200g"),
+              IngredientSection(
+                  foodImage: "assets/images/bacon.png",
+                  foodName: "Eggs",
+                  foodWeight: "200g"),
+              IngredientSection(
+                  foodImage: "assets/images/food.png",
+                  foodName: "Milk",
+                  foodWeight: "200g"),
+            ],
+          ),
         ));
   }
 }
@@ -58,16 +73,16 @@ class AppBarSection extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       leading: Padding(
-        padding: const EdgeInsets.only(left: 30.0),
+        padding: const EdgeInsets.only(left: 15.0),
         child: IconButton(
           onPressed: () {},
           icon:
-              Transform.scale(scale: 1.5, child: const Icon(Icons.arrow_back)),
+              Transform.scale(scale: 1.3, child: const Icon(Icons.arrow_back)),
         ),
       ),
       actions: [
         Padding(
-          padding: const EdgeInsets.only(right: 20.0),
+          padding: const EdgeInsets.only(right: 18.0),
           child: IconButton(
             onPressed: () {},
             icon: Transform.scale(
@@ -90,30 +105,41 @@ class VideoSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      height: 200,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(18),
-        color: Colors.white,
-      ),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(18),
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(18),
-              child: Image.asset(
-                bgImg,
-              ),
-            ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Container(
+          alignment: Alignment.center,
+          height: 200,
+          width: 400,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(18),
+            color: Colors.white,
           ),
-          Image.asset(frImg, fit: BoxFit.cover),
-        ],
-      ),
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: Container(
+                  width: 370,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(18),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(18),
+                    child: Image.asset(
+                      bgImg,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+              Image.asset(frImg, fit: BoxFit.cover),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
@@ -124,19 +150,22 @@ class RatingSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-        padding: EdgeInsets.all(30.0),
+        padding: EdgeInsets.only(left: 16.0, top: 18.0, bottom: 18.0),
         child: Row(
           children: [
             Icon(Icons.star, color: Colors.orange),
-            SizedBox(width: 10), // Add equal spacing between items
+            SizedBox(width: 4),
             Text(
               "4,5",
-              style: TextStyle(fontSize: 18),
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
-            SizedBox(width: 10), // Add equal spacing between items
+            SizedBox(width: 6), // Add equal spacing between items
             Text(
               "(300 Reviews)",
-              style: TextStyle(fontWeight: FontWeight.w200, fontSize: 18),
+              style: TextStyle(
+                  fontWeight: FontWeight.w300,
+                  fontSize: 15,
+                  color: Colors.grey),
             ),
           ],
         ));
@@ -144,45 +173,59 @@ class RatingSection extends StatelessWidget {
 }
 
 class UserSection extends StatelessWidget {
-  const UserSection({Key? key});
+  const UserSection({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 30.0, right: 30.0),
+      padding: const EdgeInsets.only(left: 20.0, right: 20.0),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Image.asset("assets/images/model.png"),
-          const SizedBox(width: 10),
+          SizedBox(
+            width: 50,
+            child: Image.asset(
+              "assets/images/model.png",
+              fit: BoxFit.cover,
+            ),
+          ),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  "Roberta Anny",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                const Padding(
+                  padding: EdgeInsets.only(left: 12.0),
+                  child: Text(
+                    "Roberta Anny",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
                 ),
-                Row(
-                  children: [
-                    Image.asset("assets/images/location.png"),
-                    const SizedBox(width: 8),
-                    const Text(
-                      "Bali, Indonesia",
-                      style: TextStyle(
-                        fontWeight: FontWeight.w200,
+                Padding(
+                  padding: const EdgeInsets.only(left: 12.0),
+                  child: Row(
+                    children: [
+                      Image.asset("assets/images/location.png"),
+                      const SizedBox(width: 4),
+                      const Text(
+                        "Bali, Indonesia",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w300,
+                          fontSize: 16,
+                          color: Colors.grey,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
           ),
           Container(
             height: 50,
-            width: 90,
+            width: 100,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: Colors.red.shade500,
+              color: Colors.red.shade800,
             ),
             child: const Center(
               child: Text(
@@ -196,6 +239,97 @@ class UserSection extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class IngredentHeaderSection extends StatelessWidget {
+  const IngredentHeaderSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Padding(
+      padding: EdgeInsets.only(left: 25.0, right: 25.0, bottom: 20, top: 25),
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              "Ingredients",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
+            ),
+          ),
+          Text(
+            "5 items",
+            style: TextStyle(
+              fontWeight: FontWeight.w300,
+              color: Colors.grey,
+            ),
+          ),
+        ],
+      ),
+    );
+    ;
+  }
+}
+
+class IngredientSection extends StatelessWidget {
+  final String foodImage;
+  final String foodName;
+  final String foodWeight;
+
+  const IngredientSection({
+    super.key,
+    required this.foodImage,
+    required this.foodName,
+    required this.foodWeight,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 25.0, right: 25.0, bottom: 15),
+      child: Container(
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: Colors.transparent, width: 2),
+          color: Colors.grey.shade200,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.transparent, width: 2),
+                    color: Colors.white,
+                  ),
+                  padding: const EdgeInsets.all(9),
+                  child: Image.asset(foodImage, fit: BoxFit.cover),
+                ),
+                const SizedBox(
+                  width: 15,
+                ),
+                Text(
+                  foodName,
+                  style: const TextStyle(
+                      fontSize: 17, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            Text(
+              foodWeight,
+              style: const TextStyle(
+                fontWeight: FontWeight.w300,
+                color: Colors.grey,
+                fontSize: 14,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
