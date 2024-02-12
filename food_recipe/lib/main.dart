@@ -60,6 +60,14 @@ class _HomePageState extends State<HomePage> {
                   foodImage: "assets/images/food.png",
                   foodName: "Milk",
                   foodWeight: "200g"),
+              IngredientSection(
+                  foodImage: "assets/images/food.png",
+                  foodName: "Bread",
+                  foodWeight: "200g"),
+              IngredientSection(
+                  foodImage: "assets/images/bacon.png",
+                  foodName: "Eggs",
+                  foodWeight: "200g"),
             ],
           ),
         ));
